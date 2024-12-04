@@ -1,6 +1,8 @@
 package com.pluralsight.jdbc;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import java.sql.*;
+import java.util.Scanner;
 
 public class SQLApp {
     public static void main(String[] args) {
@@ -9,8 +11,7 @@ public class SQLApp {
         String user = "root";
         String password = "YU_oppdivide!20";
 
-        try{
-            Connection connection = DriverManager.getConnection(url, user, password);
+        try(Connection connection = DriverManager.getConnection(url, user, password)){
 
             Statement statement = connection.createStatement();
             statement.executeQuery("SELECT * FROM Vehicles");
